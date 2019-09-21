@@ -1,0 +1,34 @@
+.extern b, c
+.global a
+.data
+pocetakData1: .word 0
+a1: .word 0
+a2: .byte 0
+a3: .byte 0
+l1: .word 2
+  .word 2, 2
+.word a1 - a2
+l4: 
+;.byte l10 - a1 labele moraju biti iz iste sekcije!
+.word 0, 0
+krajData:
+.bss
+.skip 10
+.text
+pocetakText1: subw r1[10], r2
+cmpw r1, &l10
+testw r1, r2[a3]
+a: addw a1, r1
+jmpw *10
+jmpw $a1
+l10:
+callw a
+l11:
+pushw *8
+popw *8
+iretb
+l13:
+;
+.end
+
+

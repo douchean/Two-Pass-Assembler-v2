@@ -1,0 +1,38 @@
+.extern x, y, z
+.data
+pocetakData1: .word a1 - 2
+.equ a1, 0xa
+a2: .byte a1 + 2
+a3: .byte 3
+.byte -1
+.word -2
+l1: .word 0b010 + a1
+.word 2, 2
+.word a2 - a1
+l4: .byte l1 - a3
+krajData:
+.text
+pocetakText1:
+addw a2,[r1]
+
+andb r1h,r2h
+l10:
+orb r1,r2
+notb r1[a1]
+divw r1,r2
+l11:
+mulw r2,3
+movw r1,r2
+l13:
+testw r2, r2
+
+jnew x    
+callw l13   
+popw [r1]
+krajText1:
+retb
+.section .nova
+.skip 10
+.end
+
+

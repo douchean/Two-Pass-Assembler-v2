@@ -1,0 +1,50 @@
+.extern test
+.extern printf
+
+.text
+;test 1
+.global korak
+korak:
+	pushw r4
+	pushw r5
+	pushw r6
+	pushw psw
+	
+	movb r4, r0l
+	movb r5, r0h
+	mulb r5[5], 0b1000
+	subb r7[podatak], 0x8
+	addw r5[aps], 8
+	
+	.equ aps, ( 0x10 - 0b1000 + 2 * 2 / 2 ) * 2 - 4
+	 
+	callw test
+	
+	cmpw r6, r5
+	jnew kraj
+	
+	xorb r0h, &kraj
+	movw r1, &podatak
+	jmpw printf
+	
+	movw r0, r4
+	addw r5, r4
+	movw r2, r6
+	jeqw korak
+
+kraj:	
+	popw r4
+.bss
+.align 2 + 2 + 2 * 2
+	
+.data
+.skip 2
+izlazni_format:
+.byte 3
+.word 3
+.word podatak - izlazni_format
+.word kraj + 0x10 
+podatak:
+.skip 16
+.end
+

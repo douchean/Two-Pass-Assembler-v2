@@ -1,0 +1,52 @@
+#TABELA SIMBOLA
+#ime sekcija vrednost vidljivost r.b
+ .bss .bss 0 L 8
+ .data .data 0 L 9
+ .text .text 0 L 3
+ aps .text 10 L 6
+ izlazni_format .data 2 L 10
+ korak .text 0 G 4
+ kraj .text 44 L 7
+ podatak .data 9 L 5
+ printf UND 0 G 2
+ test UND 0 G 1
+
+#TABELA RELOKACIJA
+#rel.text
+#offset tip vrednost 
+0015 R_386_16 9
+
+0021 R_386_16 1
+
+0031 R_386_16 9
+
+0035 R_386_16 2
+
+#rel.bss
+#offset tip vrednost 
+#rel.data
+#offset tip vrednost 
+0007 R_386_16 3
+
+#MASINSKI KOD
+.text
+8C 28 8C 2A 8C 2C 8C 3E 
+20 28 20 20 2A 21 38 6A
+
+05 00 00 30 6E 09 00 00 
+2C 8A 10 00 00 08 00 BC
+
+A0 00 00 4C 2C 2A AC A0 
+44 00 68 21 00 44 24 22
+
+00 09 00 9C A0 00 00 24 
+20 28 2C 2A 28 24 24 2C
+
+A4 A0 00 00 94 28 
+.data
+00 00 03 03 00 07 00 54 
+00 00 00 00 00 00 00 00
+
+00 00 00 00 00 00 00 00 
+00 
+#end
